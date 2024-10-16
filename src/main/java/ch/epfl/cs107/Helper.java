@@ -31,7 +31,7 @@ public final class Helper {
 
     /** Project's resource folder - Follows Maven convention */
     private static final Path res_folder = Path.of("src", "main", "resources");
-
+    
     /** Pseudo random generator */
     private static final Random rand = new Random();
 

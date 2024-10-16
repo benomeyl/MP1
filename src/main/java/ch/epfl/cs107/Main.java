@@ -8,6 +8,8 @@ import ch.epfl.cs107.utils.Bit;
 import ch.epfl.cs107.utils.Image;
 import ch.epfl.cs107.utils.Text;
 
+import static ch.epfl.cs107.utils.Bit.getXthBit;
+
 import java.io.File;
 import java.util.Arrays;
 
@@ -50,7 +52,7 @@ public final class Main {
      */
     public static void main(String[] args) {
         // ========== Test Bit ==========
-        //assert testXthBit();
+        assert testXthBit();
         //assert testGetLSB();
         //assert testEmbedInXthBit();
         //assert testEmbedInLSB();
