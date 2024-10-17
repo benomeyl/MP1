@@ -11,6 +11,8 @@ import static ch.epfl.cs107.crypto.Encrypt.*;
 import static ch.epfl.cs107.crypto.Decrypt.*;
 import static ch.epfl.cs107.Main.*;
 
+import java.lang.Math;
+
 /**
  * <b>Task 1.1: </b>Utility class to manipulate bits
  *
@@ -36,7 +38,20 @@ public final class Bit {
      * @return embedded value
      */
     public static int embedInXthBit(int value, boolean m, int pos) {
-        return Helper.fail("NOT IMPLEMENTED");
+
+        assert pos >= 0; // reject negative positions
+        
+        //return 1;
+        //A bit overkill but smooth 
+            /*
+             * 1. create a mask of 1 bit wise shift of size "pos"
+             * 2. Take the negative 
+             * 3. make a and logical to value -> pos-bit will be 0
+             * 4. apply m to the pos-bit 
+             */
+        return (value & ~( 1 << pos )) | (m? 1 : 0) << pos;
+        
+        //return Helper.fail("NOT IMPLEMENTED");
     }
 
     /**
@@ -58,7 +73,9 @@ public final class Bit {
      * @return <code>true</code> if the bit is '1' and <code>false</code> otherwise
      */
     public static boolean getXthBit(int value, int pos) {
-        return ((value >>> pos) & 0b00000001) == 1; //shift the desired bit to the right and apply a "and" mask
+        assert pos >= 0; // reject negative positions
+
+        return ((value >>> pos) & 0b1) == 1; //shift the desired bit to the right and apply a "and" mask
         //return Helper.fail("NOT IMPLEMENTED");
     }
 
@@ -93,7 +110,13 @@ public final class Bit {
      * @return bit array representation of the value
      */
     public static boolean[] toBitArray(byte value){
-        return Helper.fail("NOT IMPLEMENTED");
+        boolean[] toBool = new boolean[Byte.SIZE];
+
+        for(int i = 0; i < Byte.SIZE; i++){
+            toBool[i] = getXthBit(value, Byte.SIZE - 1 - i);
+        }
+        return toBool;
+        //return Helper.fail("NOT IMPLEMENTED");
     }
 
     /**

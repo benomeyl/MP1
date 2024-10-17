@@ -9,6 +9,7 @@ import ch.epfl.cs107.utils.Image;
 import ch.epfl.cs107.utils.Text;
 
 import static ch.epfl.cs107.utils.Bit.getXthBit;
+import static ch.epfl.cs107.utils.Bit.toBitArray;
 
 import java.io.File;
 import java.util.Arrays;
@@ -54,7 +55,9 @@ public final class Main {
         // ========== Test Bit ==========
         assert testXthBit();
         //assert testGetLSB();
-        //assert testEmbedInXthBit();
+        assert testEmbedInXthBit();
+
+        boolean[] b = toBitArray((byte)-4);
         //assert testEmbedInLSB();
         //assert testByteConversion();
         // ========== Test Text ==========
