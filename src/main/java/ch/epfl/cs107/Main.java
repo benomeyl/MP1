@@ -10,6 +10,7 @@ import ch.epfl.cs107.utils.Text;
 
 import static ch.epfl.cs107.utils.Bit.getXthBit;
 import static ch.epfl.cs107.utils.Bit.toBitArray;
+import static ch.epfl.cs107.utils.Bit.toByte;
 
 import java.io.File;
 import java.util.Arrays;
@@ -58,10 +59,14 @@ public final class Main {
         assert testEmbedInXthBit();
 
         boolean[] b = toBitArray((byte)-4);
+
+        byte b2 = toByte(new boolean[]{false, true, true, true, true, true, false, false});
+
+        boolean[] bitA = Text.toBitArray("éé");
         //assert testEmbedInLSB();
         //assert testByteConversion();
         // ========== Test Text ==========
-        //assert testToBitArray();
+        assert testToBitArray();
         Helper.dialog("Tests", "Bit and Text manipulation passed");
         // ========== Test Image ==========
         //assert testConversionARGBInt();

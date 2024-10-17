@@ -73,8 +73,8 @@ public final class Bit {
      * @return <code>true</code> if the bit is '1' and <code>false</code> otherwise
      */
     public static boolean getXthBit(int value, int pos) {
-        assert pos >= 0; // reject negative positions
-
+        assert pos >= 0; // reject out of bounds positions
+        
         return ((value >>> pos) & 0b1) == 1; //shift the desired bit to the right and apply a "and" mask
         //return Helper.fail("NOT IMPLEMENTED");
     }
@@ -136,7 +136,17 @@ public final class Bit {
      * @return the byte representation of the bit array
      */
     public static byte toByte(boolean[] bitArray){
-        return Helper.fail("NOT IMPLEMENTED");
+        assert bitArray != null;
+        
+        byte b = 0;
+
+        for(int i = 0; i < bitArray.length; i++){
+            b = (byte)embedInXthBit(b, bitArray[bitArray.length - 1 - i], i);
+        } 
+
+        return b;
+        
+        //return Helper.fail("NOT IMPLEMENTED");
     }
 
 }
