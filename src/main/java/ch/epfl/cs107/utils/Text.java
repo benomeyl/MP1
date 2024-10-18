@@ -3,6 +3,7 @@ package ch.epfl.cs107.utils;
 import ch.epfl.cs107.Helper;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 
 import static ch.epfl.cs107.utils.Text.*;
 import static ch.epfl.cs107.utils.Image.*;
@@ -46,10 +47,21 @@ public final class Text {
      * @return <b>UTF-8</b> representation of the string in the <b>bit array</b> format
      */
     public static boolean[] toBitArray(String str){
-     
-        
+        byte[] bytesStr = toBytes(str); // str in bytes
 
-        return Helper.fail("NOT IMPLEMENTED");
+        boolean[] bitArr = new boolean[bytesStr.length*Byte.SIZE]; //output
+
+        for(int i = 0; i < bytesStr.length; i++){
+            boolean[] bitChar = Bit.toBitArray(bytesStr[i]); // convert one byte to bool array
+
+            for(int j = 0; j < Byte.SIZE; j++){
+                bitArr[Byte.SIZE*i+j] = bitChar[j];
+            }
+        }
+        
+        return bitArr;
+
+        //return Helper.fail("NOT IMPLEMENTED");
     }
 
     /**
@@ -67,7 +79,20 @@ public final class Text {
      * @return <b>UTF-8 String</b> representation of the bit array
      */
     public static String toString(boolean[] bitArray) {
-        return Helper.fail("NOT IMPLEMENTED");
+
+        assert bitArray.length % Byte.SIZE == 0; // we want to split bitArray of small packets of 8 bits;
+
+        byte[] bytesArr = new byte[bitArray.length/Byte.SIZE];
+
+        for(int i = 0; i < bitArray.length/Byte.SIZE; i++){
+            boolean[] bitArraySlice = Arrays.copyOfRange(bitArray, i*Byte.SIZE, i*Byte.SIZE + Byte.SIZE);
+
+            bytesArr[i] = toByte(bitArraySlice);
+        }
+
+        return toString(bytesArr);
+        
+        //return Helper.fail("NOT IMPLEMENTED");
     }
 
 }

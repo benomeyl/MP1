@@ -11,6 +11,8 @@ import ch.epfl.cs107.utils.Text;
 import static ch.epfl.cs107.utils.Bit.getXthBit;
 import static ch.epfl.cs107.utils.Bit.toBitArray;
 import static ch.epfl.cs107.utils.Bit.toByte;
+import static ch.epfl.cs107.utils.Text.toBytes;
+import static ch.epfl.cs107.utils.Text.toString;
 
 import java.io.File;
 import java.util.Arrays;
@@ -55,16 +57,10 @@ public final class Main {
     public static void main(String[] args) {
         // ========== Test Bit ==========
         assert testXthBit();
-        //assert testGetLSB();
+        //assert testGetLSB(); //Enzo 
         assert testEmbedInXthBit();
-
-        boolean[] b = toBitArray((byte)-4);
-
-        byte b2 = toByte(new boolean[]{false, true, true, true, true, true, false, false});
-
-        //boolean[] bitA = Text.toBitArray("éé");
-        //assert testEmbedInLSB();
-        //assert testByteConversion();
+        //assert testEmbedInLSB(); // Enzo
+        assert testByteConversion();
         // ========== Test Text ==========
         //assert testToBitArray();
         Helper.dialog("Tests", "Bit and Text manipulation passed");
