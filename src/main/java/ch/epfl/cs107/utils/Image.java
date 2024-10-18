@@ -48,9 +48,9 @@ public final class Image {
      */
     public static byte alpha(int pixel){
 
-        final int mask = 0b11111111_00000000_00000000_00000000;
+        final int MASK = 0b11111111_00000000_00000000_00000000;
 
-        return (byte)((pixel & mask) >>> 24); 
+        return (byte)((pixel & MASK) >>> 24);
         //return Helper.fail("NOT IMPLEMENTED");
     }
 
