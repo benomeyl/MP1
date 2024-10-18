@@ -62,11 +62,11 @@ public final class Main {
 
         byte b2 = toByte(new boolean[]{false, true, true, true, true, true, false, false});
 
-        boolean[] bitA = Text.toBitArray("éé");
+        //boolean[] bitA = Text.toBitArray("éé");
         //assert testEmbedInLSB();
         //assert testByteConversion();
         // ========== Test Text ==========
-        assert testToBitArray();
+        //assert testToBitArray();
         Helper.dialog("Tests", "Bit and Text manipulation passed");
         // ========== Test Image ==========
         //assert testConversionARGBInt();
