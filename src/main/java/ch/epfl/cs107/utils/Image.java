@@ -47,7 +47,11 @@ public final class Image {
      * @return the alpha component of the pixel
      */
     public static byte alpha(int pixel){
-        return Helper.fail("NOT IMPLEMENTED");
+
+        final int mask = 0b11111111_00000000_00000000_00000000;
+
+        return (byte)((pixel & mask) >>> 24); 
+        //return Helper.fail("NOT IMPLEMENTED");
     }
 
     /**

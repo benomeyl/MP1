@@ -65,6 +65,10 @@ public final class Main {
         //assert testToBitArray();
         Helper.dialog("Tests", "Bit and Text manipulation passed");
         // ========== Test Image ==========
+        int pixel =  0b11111111_11110000_00001111_01010101;
+        byte alpha = Image.alpha(pixel);
+
+        
         //assert testConversionARGBInt();
         //assert testPixelToGray();
         //assert testGrayToBinary();
