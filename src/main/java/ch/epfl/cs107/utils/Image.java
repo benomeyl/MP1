@@ -61,7 +61,7 @@ public final class Image {
      * @return the red component of the pixel
      */
     public static byte red(int pixel){
-        return Helper.fail("NOT IMPLEMENTED");
+        return (byte) (pixel >>> 16);
     }
 
     /**
@@ -71,7 +71,7 @@ public final class Image {
      * @return the green component of the pixel
      */
     public static byte green(int pixel){
-        return Helper.fail("NOT IMPLEMENTED");
+        return (byte) (pixel >>> 8);
     }
 
     /**
@@ -81,7 +81,7 @@ public final class Image {
      * @return the blue component of the pixel
      */
     public static byte blue(int pixel){
-        return Helper.fail("NOT IMPLEMENTED");
+        return (byte) pixel ;
     }
 
     /**
@@ -91,7 +91,10 @@ public final class Image {
      * @return gray scaling of the given pixel
      */
     public static int gray(int pixel){
-        return Helper.fail("NOT IMPLEMENTED");
+
+        return ( Byte.toUnsignedInt(red(pixel)) +
+                Byte.toUnsignedInt(green(pixel)) +
+                Byte.toUnsignedInt(blue(pixel)) ) / 3;
     }
 
     /**
@@ -102,7 +105,8 @@ public final class Image {
      * @return binary representation of a pixel
      */
     public static boolean binary(int gray, int threshold){
-        return Helper.fail("NOT IMPLEMENTED");
+        assert ( (gray >= 0) && (gray <= 255) );
+        return gray >= threshold;
     }
 
     // ============================================================================================
@@ -116,7 +120,19 @@ public final class Image {
      * @return the gray scale version of the image
      */
     public static int[][] toGray(int[][] image){
-        return Helper.fail("NOT IMPLEMENTED");
+        // testons l'existence du tableau
+        assert ( (image != null) );
+
+        int[][] newImage = new int[image.length][image[0].length];
+
+        for(int i = 0; i < image.length; i++){
+            newImage[i] = new int[image[i].length];
+            for (int j = 0; j < image[i].length; j++) {
+                int newGrayPixel = gray(image[i][j]);
+                newImage[i][j] = newGrayPixel;
+            }
+        }
+        return newImage;
     }
 
     /**
